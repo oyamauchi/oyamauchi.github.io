@@ -1,0 +1,83 @@
+body {
+  background-color: #f3f3f3;
+  font-family: system-ui, sans-serif;
+
+  font-size: 19px;
+  line-height: 1.6em;
+}
+
+main {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1, address {
+  text-align: center;
+}
+
+a:any-link {
+  color: #0069c2;
+}
+
+entry-header {
+  display: flex;
+}
+entry-header > job {
+  flex-grow: 1;
+
+  display: flex;
+  column-gap: 20px;
+  flex-wrap: wrap;
+}
+job > employer {
+  font-weight: bold;
+}
+entry-header > timerange {
+  flex-grow: 0;
+  padding-left: 20px;
+
+  font-style: italic;
+  text-align: right;
+}
+
+entry-details {
+  display: block;
+
+  border-left: 1px solid gray;
+
+  padding-top: 9px;
+  margin-bottom: 25px;
+  margin-left: 0.1em;
+}
+
+entry-details > ul {
+  margin: 0;
+}
+
+li {
+  padding-bottom: 5px;
+}
+li:last-child {
+  padding-bottom: 0;
+}
+
+.job {
+  flex-grow: 1;
+}
+
+.timerange {
+  flex-grow: 0;
+  padding-left: 20px;
+
+  font-style: italic;
+  text-align: right;
+}
+
+footer {
+  margin-top: 25px;
+
+  color: darkgray;
+  font-size: smaller;
+  text-align: center;
+}
