@@ -27,7 +27,7 @@ entry-header > job {
   flex-grow: 1;
 
   display: flex;
-  column-gap: 20px;
+  column-gap: 5px;
   flex-wrap: wrap;
 }
 job > employer {
