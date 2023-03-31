@@ -16,6 +16,33 @@ h1, address {
   text-align: center;
 }
 
+#prons {
+  width: fit-content;
+  margin: auto;
+}
+
+pronunciation {
+  display: inline-block;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+}
+
+pronunciation-details {
+  display: none;
+  position: absolute;
+
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 10px;
+  font-size: small;
+  text-decoration: none;
+}
+
+pronunciation:hover pronunciation-details {
+  display: block;
+}
+
 a:any-link {
   color: #0069c2;
 }
