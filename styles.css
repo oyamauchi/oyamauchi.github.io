@@ -136,3 +136,23 @@ sup {
   position: relative;
   vertical-align: top;
 }
+
+.crumbs {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.crumb {
+  display: inline-block;
+}
+
+.crumb::after {
+  color: black;
+  content: ' >';
+  padding: 0 5px;
+  text-decoration: none;
+}
+
+.crumb:last-of-type::after {
+  content: ''
+}

@@ -3,6 +3,7 @@ const footnote = require("markdown-it-footnote");
 const markdown = require("markdown-it");
 const anchor = require("markdown-it-anchor");
 const { markdownItTable } = require("markdown-it-table");
+const navigation = require('@11ty/eleventy-navigation');
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("styles.css");
@@ -27,6 +28,7 @@ module.exports = function (eleventyConfig) {
   mdLib.use(anchor);
   eleventyConfig.addFilter("markdown", (value) => mdLib.render(value));
   eleventyConfig.setLibrary("md", mdLib);
+  eleventyConfig.addPlugin(navigation);
 
   return {};
 };

@@ -1,7 +1,13 @@
+---
+navOptions:
+  listClass: crumbs
+  listItemClass: crumb
+---
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ title }}</title>
+    <title>{{ eleventyNavigation.title }}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/styles.css" />
@@ -14,11 +20,16 @@
   </head>
   <body>
     <header>
-      <h1>{{title}}</h1>
+      <h1>{{ eleventyNavigation.title }}</h1>
+      <nav>
+        {{ collections.all | eleventyNavigationBreadcrumb:
+        eleventyNavigation.key | eleventyNavigationToHtml: navOptions }}
+      </nav>
     </header>
     <main>
+      {% if summary %}
       <p>{{ summary | markdown }}</p>
-      {{ content }}
+      {% endif %} {{ content }}
     </main>
     <footer>&copy; 2023</footer>
   </body>

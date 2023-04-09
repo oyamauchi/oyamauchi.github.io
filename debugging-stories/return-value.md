@@ -1,6 +1,9 @@
 ---
-title: The Disappearing Return Value
-layout: debugging-story.html
+eleventyNavigation:
+  key: return-value
+  title: The Disappearing Return Value
+  parent: debugging-stories
+layout: general.html
 include_hljs: true
 tags: debugging
 
