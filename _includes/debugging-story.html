@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles.css" />
+    {% if include_hljs %}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/solarized-dark.min.css"
+    />
+    {% endif %}
+  </head>
+  <body>
+    <header>
+      <h1>{{title}}</h1>
+    </header>
+    <main>
+      <p>{{ summary | markdown }}</p>
+      {{ content }}
+    </main>
+    <footer>&copy; 2023</footer>
+  </body>
+</html>
