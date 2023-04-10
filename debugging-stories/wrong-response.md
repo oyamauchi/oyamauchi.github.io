@@ -56,9 +56,6 @@ We upgraded Wrangler from Node 12 to Node 14 partially as a "maybe this will fix
 
 ## (Unsatisfying) Conclusion
 
-I'm left with two contradictory conclusions:
+Everything about this bug looks like a race condition in the HTTP server infrastructure, but I feel like it _can't_ be, purely as a practical matter. Node's HTTP server library is in extremely heavy use in the wider world, and if there really were a race condition that caused a bug like this, it's unimaginable that we would have been the first to hit it.
 
-- I cannot come up with a theory where the bug is in our code that isn't ruled out by the evidence.
-- Node's HTTP server library is in extremely heavy use in the wider world, and if there really were a race condition that caused a bug like this, it's unimaginable that we would have been the first to hit it.
-
-Everything about this bug looks like a race condition in the HTTP server infrastructure, but I feel like, practically, it _can't_ be. I just can't imagine what else it _could_ be.
+Still, I can't come up with any theory, where the bug is in our code, that isn't ruled out by the evidence. I don't know what to think.
