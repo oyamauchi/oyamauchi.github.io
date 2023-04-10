@@ -27,8 +27,8 @@ navOptions:
       </nav>
     </header>
     <main>
-      {% if summary %}
-      <p>{{ summary | markdown }}</p>
+      {% if eleventyNavigation.excerpt %}
+      <p>{{ eleventyNavigation.excerpt | markdown }}</p>
       {% endif %} {{ content }}
     </main>
     <footer>&copy; 2023</footer>
