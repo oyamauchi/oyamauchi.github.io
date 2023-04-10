@@ -156,3 +156,7 @@ sup {
 .crumb:last-of-type::after {
   content: ''
 }
+
+.footnote-item:target {
+  background-color: #fdf6e3;
+}
