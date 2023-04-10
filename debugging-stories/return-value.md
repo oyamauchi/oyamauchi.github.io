@@ -3,14 +3,12 @@ eleventyNavigation:
   key: return-value
   title: The Disappearing Return Value
   parent: debugging-stories
+  excerpt: |
+    I hit this at the very beginning of my time working on [HHVM](https://github.com/facebook/hhvm). While working on an unrelated task, I encountered this bizarre symptom, which took me a while to even notice, and then sent me down a very fun rabbit hole to debug.
+
+    Sadly, the bugged revision has vanished from the public HHVM repo; it seems they rewrote history at some point.
 layout: general.html
 include_hljs: true
-tags: debugging
-
-summary: |
-  I hit this at the very beginning of my time working on [HHVM](https://github.com/facebook/hhvm). While working on an unrelated task, I encountered this bizarre symptom, which took me a while to even notice, and then sent me down a very fun rabbit hole to debug.
-
-  Sadly, the bugged revision has vanished from the public HHVM repo; it seems they rewrote history at some point.
 ---
 
 ## Symptom

@@ -8,10 +8,11 @@ layout: general.html
 
 I've had to debug some interesting problems in my time. These are some of the ones I can remember. I'll continue adding to these as I think of them.
 
-{% for story in collections.debugging %}
+{% assign stories = collections.all | eleventyNavigation: "debugging-stories" %}
+{% for story in stories %}
 
-### [{{ story.data.eleventyNavigation.title }}]({{ story.url }})
+### [{{ story.title }}]({{ story.url }})
 
-{{ story.data.summary }}
+{{ story.excerpt }}
 
 {% endfor %}
