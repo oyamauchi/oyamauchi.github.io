@@ -5,8 +5,6 @@ eleventyNavigation:
   parent: debugging-stories
   excerpt: |
     I hit this at the very beginning of my time working on [HHVM](https://github.com/facebook/hhvm). While working on an unrelated task, I encountered this bizarre symptom, which took me a while to even notice, and then sent me down a very fun rabbit hole to debug.
-
-    Sadly, the bugged revision has vanished from the public HHVM repo; it seems they rewrote history at some point.
 layout: general.html
 include_hljs: true
 ---
@@ -15,9 +13,11 @@ include_hljs: true
 
 A return value was disappearing.
 
-There was one function that was returning a value; let's say it was 123. I printf'ed the return value right before returning to make sure it was correct.
+There was one function that was returning a specific value, but the caller of that function appeared to be getting a different value.
 
-But the caller of that function wasn't seeing 123. I printf'ed the received return value immediately after the call, and it was something else.
+Furthermore, when I put in `printf` calls around the return and the call, the bug usually went away. It took a lot of trial and error to find a combination of debugging statements that proved there really was a mismatch.
+
+Even worse, this only happened in optimized builds. In debug builds, no matter what I did, the bug didn't repro.
 
 ## Code
 
@@ -171,7 +171,7 @@ I love this bug for three reasons:
 
 - You'd normally expect dereferencing an uninitialized pointer to cause big problems, but this bug manifested in the sneakiest way possible. It took me a while to even find the disappearing return value, because who even expects such a thing to happen?
 - It's completely inscrutable without understanding the stack discipline and the nature of machine code. It was gratifying to have that knowledge actually come in useful. (Never mind that this happened in a JIT compiler, where that knowledge was essential anyway --- this could have happened in any C++ project.) This bug was beyond the reach of printf debugging; I needed GDB.
-- It requires so many things to line up just right, in the code, the compilation[^3], and the runtime environment:
+- It requires so many things to line up just right, in the code, the compilation, and the runtime environment:
   - The uninitialized `TypedValue` had to be allocated on top of the old stack frame.
   - The `TypedValue`'s inner pointer, and `InnerData`'s refcount field, both had to be at the right offsets within the structs to line up with the right on-stack bits.
   - `yetAnotherFunction` has to save the frame pointer to the stack[^2].
@@ -180,8 +180,10 @@ I love this bug for three reasons:
   - In the real HHVM code, `tvIncRef` actually checks another field of the `TypedValue` to determine whether to increment the refcount at all, so that field (also "initialized" with garbage from the stack) had to have a suitable value too.
   - This had to be on a little-endian architecture with variable-width instructions. E.g. it couldn't have happened on ARM because the misaligned instruction pointer would have blown up.
 
+All these coincidences are why the bug was so sensitive to my debugging efforts. Intervening calls to `printf` could overwrite the stack. Doing a debug build, or even just assigning one variable to another, could change the register allocation so that something totally different would happen.
+
 [^2]: On 64-bit x86, `%rbp` isn't always saved to the stack; it can be omitted in leaf functions. It's also possible to compile whole programs without frame pointers at all, but that never applied to HHVM.
 
 Anyway, I spent hours figuring this out and put up the fix for review, only to discover that someone else had already fixed it while I was busy.
 
-[^3]: I don't actually remember if this happened in both debug and optimized builds, or just one. Which configuration makes all the circumstances more likely to line up is left as an exercise to the reader.
+Sadly, the bugged revision has vanished from the public HHVM repo; it seems they rewrote history at some point.
