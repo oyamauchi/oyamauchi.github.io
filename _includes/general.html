@@ -1,10 +1,10 @@
 ---
 navOptions:
-  listClass: crumbs
-  listItemClass: crumb
+  listClass: flex
+  listItemClass: inline-block text-sky-600 after:inline-block after:decoration-0 after:px-2 after:text-black after:content-['>'] last-of-type:after:content-['']
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <title>{{ eleventyNavigation.title }}</title>
@@ -18,19 +18,23 @@ navOptions:
     />
     {% endif %}
   </head>
-  <body>
-    <header>
-      <h1>{{ eleventyNavigation.title }}</h1>
+  <body class="bg-neutral-100 text-lg">
+    <header class="max-w-3xl mx-auto flex flex-col gap-4 my-4">
+      <h1 class="text-3xl font-bold text-center">
+        {{ eleventyNavigation.title }}
+      </h1>
       <nav>
         {{ collections.all | eleventyNavigationBreadcrumb:
         eleventyNavigation.key | eleventyNavigationToHtml: navOptions }}
       </nav>
     </header>
-    <main>
+    <main class="{{pageClasses}} max-w-3xl mx-auto">
       {% if eleventyNavigation.excerpt %}
       <p>{{ eleventyNavigation.excerpt | markdown }}</p>
       {% endif %} {{ content }}
     </main>
-    <footer>&copy; 2023</footer>
+    <footer class="text-neutral-500 text-sm text-center my-6">
+      &copy; 2026
+    </footer>
   </body>
 </html>

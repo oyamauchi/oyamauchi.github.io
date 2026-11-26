@@ -1,186 +1,84 @@
-body {
-  background-color: #f3f3f3;
-  font-family: "lucida grande", system-ui, sans-serif;
+@import "tailwindcss";
 
-  font-size: 1.1rem;
-  line-height: 1.6em;
+@theme {
+  --font-sans: "lucida grande", system-ui, sans-serif;
+  --font-mono: monospace;
 }
 
-header, main {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+/* Convenience things for common styling */
+
+#frontpage .linkbutton {
+  @apply no-underline rounded-lg text-black text-center text-xl bg-neutral-300 hover:bg-neutral-400 py-4;
 }
 
-h1, address {
-  text-align: center;
+h2 {
+  @apply text-2xl font-bold mbs-6 mbe-4;
 }
 
-#prons {
-  width: fit-content;
-  margin: auto;
+h3 {
+  @apply text-xl font-bold mbs-6 mbe-4;
 }
 
-pronunciation {
-  display: inline-block;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-decoration-thickness: 1px;
+p {
+  @apply mbe-4;
+
+  &:last-of-type {
+    @apply mbe-0;
+  }
 }
 
-pronunciation-details {
-  display: none;
-  position: absolute;
-
-  background-color: white;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 10px;
-  font-size: small;
-  text-decoration: none;
+a {
+  @apply text-sky-700 underline underline-offset-2;
 }
 
-pronunciation:hover pronunciation-details {
-  display: block;
-}
-
-a:any-link {
-  color: #0069c2;
-}
-
-entry-header {
-  display: flex;
-}
-entry-header > job {
-  flex-grow: 1;
-
-  display: flex;
-  column-gap: 5px;
-  flex-wrap: wrap;
-}
-job > employer {
-  font-weight: bold;
-}
-entry-header > timerange {
-  flex-grow: 0;
-  padding-left: 20px;
-
-  font-style: italic;
-  text-align: right;
-}
-
-entry-details {
-  display: block;
-
-  border-left: 1px solid gray;
-
-  padding-top: 9px;
-  margin-bottom: 25px;
-  margin-left: 0.1em;
-}
-
-entry-details > ul {
-  margin: 0;
-}
-
-li {
-  padding-bottom: 5px;
-}
-li:last-child {
-  padding-bottom: 0;
-}
-
-.job {
-  flex-grow: 1;
-}
-
-.timerange {
-  flex-grow: 0;
-  padding-left: 20px;
-
-  font-style: italic;
-  text-align: right;
-}
-
-code {
-  padding: 2px 3px 2px 3px;
-  background-color: #e0e0e0;
-  border-radius: 5px;
-}
-
-pre {
-  line-height: 1.2em;
-}
-
-pre code {
-  background-color: transparent;
-  border-width: 0px;
-  padding: 0px;
-}
-
-pre code.hljs {
-  padding: 20px;
-  border-radius: 10px;
-  line-height: 1.6em;
-}
-
-footer {
-  margin-top: 25px;
-
-  color: darkgray;
-  font-size: smaller;
-  text-align: center;
-}
-
-sup {
-  top: -0.5em;
-  position: relative;
-  vertical-align: top;
-}
-
-.crumbs {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.crumb {
-  display: inline-block;
-}
-
-.crumb::after {
-  color: black;
-  content: ' >';
-  padding: 0 5px;
-  text-decoration: none;
-}
-
-.crumb:last-of-type::after {
-  content: ''
+.footnote-ref {
+  @apply text-sky-600;
 }
 
 .footnote-item:target {
-  background-color: #fdf6e3;
+  @apply bg-amber-100;
 }
 
-#linkgrid {
-  display: grid;
-  grid-template-columns: repeat(3, 33.3%);
-  column-gap: 15px;
+.footnotes-sep {
+  @apply my-6;
 }
 
-#linkgrid .button {
-  display: inline-block;
-
-  border-radius: 10px;
-  text-align: center;
-
-  font-family: inherit;
-  font-size: 1.2em;
-
-  background-color: #d0d0d0;
-  color: inherit;
-  text-decoration: none;
+/* Code that's inline within paragraphs */
+code:not(pre code) {
+  @apply py-0.5 px-1.5 bg-neutral-200 rounded-sm whitespace-nowrap;
 }
 
-#linkgrid .button:hover {
-  background-color: #b0b0b0;
+/* Code blocks */
+pre {
+  @apply mbe-3 leading-5;
+
+  code.hljs {
+    @apply rounded-lg leading-normal;
+  }
+}
+
+/* For the page body only */
+main {
+  ul {
+    @apply ps-10 mbe-4 list-[revert];
+  }
+
+  ol {
+    @apply ps-10 mbe-4 list-[revert];
+  }
+
+  li {
+    @apply pbe-1;
+  }
+
+  li:last-of-type {
+    @apply pbe-0;
+  }
+
+  /* Some convenience stuff specific to the resume page */
+  &.resume {
+    .exp-list {
+      @apply ms-0.5 pbs-2 border-s border-s-gray-400;
+    }
+  }
 }

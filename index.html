@@ -4,7 +4,7 @@ eleventyNavigation:
   title: Home
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <title>Owen Yamauchi</title>
@@ -12,43 +12,50 @@ eleventyNavigation:
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
-  <body>
+  <body id="frontpage" class="bg-neutral-100 text-lg">
     <!-- Yes this HTML is 100% hand-written -->
 
-    <header>
-      <h1>Owen Yamauchi</h1>
-      <address>[first name].[last name] at gmail.com</address>
-      <div id="prons">
+    <header class="max-w-3xl mx-auto flex flex-col my-4">
+      <h1 class="mx-auto text-4xl font-bold mbe-4">Owen Yamauchi</h1>
+
+      <div class="font-mono text-sm text-center">
+        [first name].[last name] at gmail.com
+      </div>
+      <div class="text-center">
         he/him &mdash;
-        <pronunciation>
+        <span
+          class="group inline-block underline decoration-dotted decoration-1 underline-offset-2"
+        >
           name pronunciation
 
-          <pronunciation-details>
+          <div
+            class="hidden group-hover:block absolute text-sm bg-white p-2.5 shadow-lg border border-neutral-300 rounded-sm"
+          >
             Say &ldquo;yama&rdquo;. Then say &ldquo;oochee&rdquo;. Pretend
             it&rsquo;s hyphenated:
             <em>Yama-Uchi</em>.
             <!-- IPA: [ˌjɒ.məˈu.tʃi] -->
-          </pronunciation-details>
-        </pronunciation>
+          </div>
+        </span>
       </div>
     </header>
 
-    <main>
+    <main class="max-w-3xl mx-auto">
       <section id="intro">
-        <p>
+        <p class="mbe-4">
           I&rsquo;ve been a software engineer since 2009. I&rsquo;ve worked in a
           wide range of areas, including full-stack development of web, mobile,
           and macOS desktop apps in a variety of domains. I&rsquo;ve also done
           low-level systems work: a just-in-time compiler for PHP and Hack.
         </p>
-        <p>
+        <p class="mbe-4">
           I&rsquo;ve often been the go-to person for debugging tough issues or
           dealing with weird situations. This has led me to places like sitting
           on the floor in a mobile carrier&rsquo;s data center to debug
           connectivity, or learning GSM modem commands to set up an obtuse 2FA
           arrangement.
         </p>
-        <p>
+        <p class="mbe-4">
           I&rsquo;m also a technical writer and lecturer. I explain concepts
           clearly and concisely, for both technical and non-technical audiences.
           I&rsquo;ve authored a
@@ -60,18 +67,21 @@ eleventyNavigation:
         </p>
       </section>
 
-      <section id="links">
-        <div id="linkgrid">
-          <a class="button" href="/resume/"><p>Resume</p></a>
-          <a class="button" target="_blank" href="https://github.com/oyamauchi"
-            ><p>GitHub</p></a
+      <section class="mbs-6">
+        <div class="grid grid-cols-3 gap-4">
+          <a class="linkbutton" href="/resume/">R&eacute;sum&eacute;</a>
+          <a
+            class="linkbutton"
+            target="_blank"
+            href="https://github.com/oyamauchi"
+            >GitHub</a
           >
-          <a class="button" href="/debugging-stories"
-            ><p>Debugging Stories</p></a
-          >
+          <a class="linkbutton" href="/debugging-stories">Debugging Stories</a>
         </div>
       </section>
     </main>
-    <footer>&copy; 2023</footer>
+    <footer class="text-neutral-500 text-sm text-center mbs-6">
+      &copy; 2026
+    </footer>
   </body>
 </html>
