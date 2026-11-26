@@ -28,11 +28,7 @@ navOptions:
         eleventyNavigation.key | eleventyNavigationToHtml: navOptions }}
       </nav>
     </header>
-    <main class="{{pageClasses}} max-w-3xl mx-auto">
-      {% if eleventyNavigation.excerpt %}
-      <p>{{ eleventyNavigation.excerpt | markdown }}</p>
-      {% endif %} {{ content }}
-    </main>
+    <main class="{{pageClasses}} max-w-3xl mx-auto">{{ content }}</main>
     <footer class="text-neutral-500 text-sm text-center my-6">
       &copy; 2026
     </footer>

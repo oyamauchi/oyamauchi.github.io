@@ -4,11 +4,13 @@ eleventyNavigation:
   title: The Response to the Wrong Request
   parent: debugging-stories
   excerpt: |
-    I encountered this in my work at Segovia. It appeared quite rarely, and everyone's best efforts at debugging turned up nothing. For all I know it's still happening. When I left the company, I wrote in the internal bug tracker that if anyone ever solves this mystery, they are to contact me and tell me what the hell was going on, or else I'll be haunted forever.
-
-    I write this story with the faint hope that someone will read it, recognize this problem, and finally give me some closure.
+    Spoiler: this one ends with no closure. I wrote it with the faint hope that someone will read it, recognize the problem, and finally put my mind at ease.
 layout: general.html
 ---
+
+I encountered this in my work at Segovia. It appeared quite rarely, and everyone's best efforts at debugging turned up nothing. For all I know it's still happening. When I left the company, I wrote in the internal bug tracker that if anyone ever solves this mystery, they are to contact me and tell me what the hell was going on, or else I'll be haunted forever.
+
+I write this story with the faint hope that someone will read it, recognize this problem, and finally give me some closure.
 
 ## Symptom
 

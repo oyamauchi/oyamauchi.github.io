@@ -4,10 +4,12 @@ eleventyNavigation:
   title: The Disappearing Return Value
   parent: debugging-stories
   excerpt: |
-    I hit this at the very beginning of my time working on [HHVM](https://github.com/facebook/hhvm). While working on an unrelated task, I encountered this bizarre symptom, which took me a while to even notice, and then sent me down a very fun rabbit hole to debug.
+    In which I stumble across one of C++'s innumerable footguns that goes off in a disturbingly subtle way.
 layout: general.html
 include_hljs: true
 ---
+
+I hit this at the very beginning of my time working on [HHVM](https://github.com/facebook/hhvm). While working on an unrelated task, I encountered this bizarre symptom, which took me a while to even notice, and then sent me down a very fun rabbit hole to debug.
 
 ## Symptom
 
